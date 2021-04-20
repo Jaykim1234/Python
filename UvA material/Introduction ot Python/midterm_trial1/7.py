@@ -17,7 +17,7 @@ def main(num1,num2):
     while num0**2 < num1:
         num0 += 1
     if num0**2 > num2:
-        return -1
+        return None
     else:
         return num0**2 
 print(main(26, 100))
