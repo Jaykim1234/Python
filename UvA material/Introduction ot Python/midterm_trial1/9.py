@@ -15,51 +15,108 @@ True
 
 
 
+# def main(start,end):
+    
+#     spot = [i for i in start]
+    
+#     #Case 1 (+1, +1)
+
+#     lst1 = []
+#     row,col = spot[0],spot[1]
+#     while (row not in [1,8]) and (col not in [1,8]) > 0:
+#         row += 1
+#         col += 1
+#         new_spot = row,col
+#         lst1.append(new_spot)
+        
+#     # Case 2 (-1,-1)
+
+#     spot = [i for i in start]
+#     lst2 = []
+#     row,col = spot[0],spot[1]
+#     while (row not in [1,8]) and (col not in [1,8]) > 0:
+#         row -= 1
+#         col -= 1
+#         new_spot = row,col
+#         lst2.append(new_spot)
+
+#     # Case 3  (+1,-1)
+
+#     spot = [i for i in start]
+
+#     lst3 = []
+#     row,col = spot[0],spot[1]
+#     while (row not in [1,8]) and (col not in [1,8]) > 0:
+#         row += 1
+#         col -= 1
+#         new_spot = row,col
+#         lst3.append(new_spot)
+#     print(lst3)   
+
+
+#     # Case 4  (+1,-1)
+#     spot = [i for i in start]
+
+#     lst4 = []
+#     row,col = spot[0],spot[1]
+#     while (row not in [1,8]) and (col not in [1,8]) > 0:
+#         row -= 1
+#         col += 1
+#         new_spot = row,col
+#         lst4.append(new_spot)
+
+#     lst_all = lst1+lst2+lst3+lst4
+    
+#     print('end',end)
+#     print('lst_all',lst_all)
+
+#     if end in lst_all:
+#         return True
+#     else:
+#       return False
+
+
+#Trial 2
+
 def main(start,end):
     
-    spot = [i for i in start]
     
     #Case 1 (+1, +1)
-
     lst1 = []
-    row,col = spot[0],spot[1]
-    while (row not in [1,8]) and (col not in [1,8]) > 0:
+    row,col = start[0],start[1]
+    while (row not in [1,8]) and (col not in [1,8]) :
         row += 1
         col += 1
         new_spot = row,col
         lst1.append(new_spot)
-        
+
     # Case 2 (-1,-1)
 
-    spot = [i for i in start]
     lst2 = []
-    row,col = spot[0],spot[1]
-    while (row not in [1,8]) and (col not in [1,8]) > 0:
+    row,col = start[0],start[1]
+    while (row not in [1,8]) and (col not in [1,8]):
         row -= 1
         col -= 1
         new_spot = row,col
         lst2.append(new_spot)
 
     # Case 3  (+1,-1)
-
     spot = [i for i in start]
 
     lst3 = []
-    row,col = spot[0],spot[1]
-    while (row not in [1,8]) and (col not in [1,8]) > 0:
+    row,col = start[0],start[1]
+    while (row not in [8]) and (col not in [1]):
         row += 1
         col -= 1
         new_spot = row,col
         lst3.append(new_spot)
-    print(lst3)   
 
+    # Case 4  (-1,+1)
 
-    # Case 4  (+1,-1)
-    spot = [i for i in start]
 
     lst4 = []
-    row,col = spot[0],spot[1]
-    while (row not in [1,8]) and (col not in [1,8]) > 0:
+    row,col = start[0],start[1] ## Be careful at this point!!
+    while (row not in [1]) and (col not in [8]):
         row -= 1
         col += 1
         new_spot = row,col
@@ -67,10 +124,9 @@ def main(start,end):
 
     lst_all = lst1+lst2+lst3+lst4
     
-    print('end',end)
-    print('lst_all',lst_all)
-
     if end in lst_all:
         return True
     else:
         return False
+
+print(main(*((1, 8), (4, 5))))
