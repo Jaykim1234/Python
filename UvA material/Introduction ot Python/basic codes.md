@@ -4,13 +4,15 @@ x = [1, 2, 3, 4]
 new_list  =  {str(num):num ** 2 for num in x}
 print(new_list)
 
-# x contains a list of integers. Use comprehension to compile a new tuple, where the elements are that of x times 2.
+#### x contains a list of integers. Use comprehension to compile a new tuple, where the elements are that of x times 2.
 
-x = [1, 2, 3, 4, 5]
+x = [1, 2, 3, 4, 5] 
+
 new_list = tuple([num*2 for num in x])
+
 print(new_list)
 
-# x contains a list of strings. Use comprehension to compile a new list, where the elements are the length of the strings.
+#### x contains a list of strings. Use comprehension to compile a new list, where the elements are the length of the strings.
 
 x = ['abc', 'def', 'a', 'b', 'c', 'hi', 'hello']
 new_list = [len(i) for i in x]
