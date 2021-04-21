@@ -30,7 +30,7 @@ new_list = [len(i) for i in x]
 
 print(new_list)
 
-<mark style='background-color: #ffdce0'> 연한 빨강 </mark> # Dictionary is possilbe too!!!
+# Note: Dictionary is possilbe too!!!
 ### ㅁ Use comprehension to compile a new dictionary where the keys are strings of numbers from 1 to 10, and the values are those numbers in integers.
 
 new_dic = {str(i):i for i in range(1,11)}
