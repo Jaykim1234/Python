@@ -23,25 +23,6 @@ then it should return the dictionary:
  'Anaitha': {'income': 72, 'age': 80, 'ranking': 53, 'score': 53, 'weight': 59, 'spent': 54, 'length': 77, 'average': 59}}
 """
 
-# import copy
-# dic_answer = {}
-# dic = {'income': None, 'age': None, 'ranking':None , 'score':None, 'weight':None , 'spent': None, 'length': None, 'average':None }
-# lst = [['Vidya', 58, 71, 58, 73, 67, 51, 56, 69], ['Arya', 78, 54, 50, 65, 54, 64, 65, 66], ['Anaitha', 72, 80, 53, 53, 59, 54, 77, 59]]
-# print(lst[0][0])
-# for i in range(len(lst)):
-#     dic_new = copy.deepcopy(dic)
-#     dic_new['income'] = lst[i][1]
-#     dic_new['age'] = lst[i][2]
-#     dic_new['ranking'] = lst[i][3]
-#     dic_new['score'] = lst[i][4]
-#     dic_new['weight'] = lst[i][5]
-#     dic_new['spent'] = lst[i][6]
-#     dic_new['length'] = lst[i][7]
-#     dic_new['average'] = lst[i][8]
-
-#     dic_answer[lst[i][0]] = dic_new
-# print(dic_answer)
-
 def main(lst):
     import copy
     dic_answer = {}
