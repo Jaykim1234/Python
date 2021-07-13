@@ -1,5 +1,6 @@
 # Group member
 # 11968850, JINHYUN,KIM
+# Link for explaination: https://drive.google.com/file/d/1kVAZ5uD2QocMMLN8ajSdu8O9J0vO_8lV/view?usp=sharing
 
 
 import random
