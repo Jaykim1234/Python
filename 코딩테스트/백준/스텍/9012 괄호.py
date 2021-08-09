@@ -46,6 +46,30 @@ ICPC > Regionals > Asia Pacific > Korea > Nationwide Internet Competition > Daej
 알고리즘 분류
 """
 
+
+import sys
+
+N = int(sys.stdin.readline())
+
+for string in range(N):
+    input_st = list(sys.stdin.readline())
+    now = 0
+    for string in input_st:
+        if string == '(':
+            now += 1
+        elif string == ')':
+            now -= 1
+        if now < 0:
+            print('NO')
+            break
+    if now == 0:
+        print('YES')
+    elif now > 0:
+        print('NO') 
+
+
+
+
 # import sys
 
 # N = int(sys.stdin.readline())
@@ -70,34 +94,8 @@ ICPC > Regionals > Asia Pacific > Korea > Nationwide Internet Competition > Daej
 #         print('NO') 
 
 
-import sys
 
-N = int(sys.stdin.readline())
 
-stack = []
-
-for i in range(N):
-    input_st = str(sys.stdin.readline().split())
-    now = 0
-
-    for string in input_st:
-        # print(string, input_st)
-
-        if string == '(':
-            now += 1
-
-        elif string == ')':
-            now -= 1
-
-            if now < 0:
-                print ('N0')
-                break
-
-    # print(L_count, R_count)
-    if now == 0:
-        print('YES')
-    elif now > 0:
-        print('NO') 
 
 
 # for i in range(6):
@@ -143,3 +141,4 @@ for i in range(N):
 # print(st)
 # for i in st:
 #     print(i)
+
