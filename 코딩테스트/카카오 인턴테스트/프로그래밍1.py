@@ -88,3 +88,5 @@ def solution(s):
         else:
             answer += i 
     return answer
+
+    # chekc
