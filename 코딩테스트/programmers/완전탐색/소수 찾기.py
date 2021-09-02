@@ -24,36 +24,34 @@ numbers	return
 출처
 """
 
-def decimal_check(num):
-    tmp_num = 0
-    for i in range(1, num+1):
-        if num%i == 0:
-            tmp_num += i
-    if tmp_num == num + 1:
-        return True
-    else:
-        return False
+from itertools import permutations
+import math
 
-decimal_check(19)
+def solution(numbers):
+    import itertools
+    
+    def check(num):
+        tmp_num = 0
+        for i in range(1, num+1):
+            if num%i == 0:
+                tmp_num += i
+        if tmp_num == num + 1:
+            return True
+        else:
+            return False
 
-import itertools
+    answer = []
+    for k in range(1, len(numbers)+1):
+        perlist = list(map(''.join, permutations(list(numbers), k)))
+        for i in list(set(perlist)):
+            if check(int(i)):
+                answer.append(int(i))
 
-def cases(number):
-    num_lst= list(number)
-    num_lst_str_combi = []
-    for pick in range(1, len(number)+1):
-        num_lst_str = list(map(''.join, itertools.permutations(num_lst, pick)))  
-        num_lst_str_combi.extend(num_lst_str) 
-    num_lst_int = list(map(int, num_lst_str_combi))
-    num_lst_check = list(map(decimal_check, list(set(num_lst_int))))
-    print(list(set(num_lst_int)))
-    print(num_lst_check)
+    answer = len(set(answer))
 
-    return num_lst_check.count(True)
+    return answer
 
-cases('011')
-
-decimal_check(19)
+solution('122312')
 
 
 # Time error
@@ -61,7 +59,38 @@ decimal_check(19)
 def solution1(number):
     import itertools
     
-    def decimal_check(num):
+    def check(num):
+        tmp_num = 0
+        for i in range(2, num+1):
+            if num%i == 0:
+                tmp_num += i
+        if tmp_num == num:
+            return True
+        else:
+            return False
+    
+    num_lst= list(number)
+    num_lst_str_combi = []
+
+    for pick in range(1, len(number)+1):
+        num_lst_str = list(map(''.join, itertools.permutations(num_lst, pick)))  
+        num_lst_str_combi.extend(set(num_lst_str)) 
+        
+    num_lst_int = list(map(int, num_lst_str_combi))
+    num_lst_check = list(map(check, set(num_lst_int)))
+
+    return num_lst_check.count(True)
+
+solution1('011')
+
+
+# After time error.
+# Used set function
+
+def solution1(number):
+    import itertools
+    
+    def check(num):
         tmp_num = 0
         for i in range(1, num+1):
             if num%i == 0:
@@ -73,16 +102,16 @@ def solution1(number):
     
     num_lst= list(number)
     num_lst_str_combi = []
-    for pick in range(1, len(number)+1):
-        num_lst_str = list(map(''.join, itertools.permutations(num_lst, pick)))  
-        num_lst_str_combi.extend(num_lst_str) 
-        
-    num_lst_int = list(map(int, num_lst_str_combi))
-    num_lst_check = list(map(decimal_check, set(num_lst_int)))
-   
-    # print(list(set(num_lst_int)))
-    # print(num_lst_check)
 
-    return num_lst_check.count(True)
+    # set으로 중복을 제거했다.
+
+    for pick in range(1, len(number)+1):
+        num_lst_str = set(list(map(''.join, itertools.permutations(num_lst, pick)))) 
+        for each_case in num_lst_str:
+            if check(int(each_case)) == True:
+                num_lst_str_combi.append(int(each_case)) 
+    
+    return len(set(num_lst_str_combi))
 
 solution1('011')
+
