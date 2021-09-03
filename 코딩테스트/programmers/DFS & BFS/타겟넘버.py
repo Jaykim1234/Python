@@ -18,7 +18,7 @@ n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 
 타겟 넘버는 1 이상 1000 이하인 자연수입니다.
 입출력 예
 numbers	target	return
-[1, 1, 1, 1, 1]	3	5
+[1, 1, 1, 1, 1]	3 5
 입출력 예 설명
 문제에 나온 예와 같습니다.
 """
@@ -31,42 +31,45 @@ def bfs(input_lst, target):
     queue.append([-input_lst[0], 0])
 
     n = len(input_lst)
-    idx = 0
-    while idx < n:
+    count = 0
+    idx   = 0
+u    while idx < n:
         tmp, idx  = queue.popleft()
-        idx      += 1
 
         if (tmp  == target) & (idx == n):
-            return idx
+            count += 1
         else:
-            queue.append([tmp + input_lst[idx]])        
+            idx += 1
+            queue.append([tmp + input_lst[idx],  idx])
+            queue.append([tmp - input_lst[idx],  idx])    
+    return count
 
 bfs([1, 1, 1, 1, 1],3)
 
 
 
-# chekc
+# # chekc
 
-from collections import deque
-def solution(numbers, target):
-    answer = 0
-    queue  = deque()
-    n = len(numbers)
-    queue.append([numbers[0],    0])
-    queue.append([-1*numbers[0], 0])
-    while queue:
-        temp, idx = queue.popleft()
-        idx      += 1
-        if idx < n:
-            queue.append([temp+ numbers[idx], idx])
-            queue.append([temp- numbers[idx], idx])
-        else:
-            if temp  == target:
-                answer +=  1
-    return answer
-    #dafadsfasdfasdfasd
+# from collections import deque
+# def solution(numbers, target):
+#     answer = 0
+#     queue  = deque()
+#     n = len(numbers)
+#     queue.append([numbers[0],    0])
+#     queue.append([-1*numbers[0], 0])
+#     while queue:
+#         temp, idx = queue.popleft()
+#         idx      += 1
+#         if idx < n:
+#             queue.append([temp+ numbers[idx], idx])
+#             queue.append([temp- numbers[idx], idx])
+#         else:
+#             if temp  == target:
+#                 answer +=  1
+#     return answer
+#     #dafadsfasdfasdfasd
     
 
-    # adsgasdfgasdfgasd
+#     # adsgasdfgasdfgasd
     
-solution([1, 1, 1, 1, 1], 3)
+# solution([1, 1, 1, 1, 1], 3)
