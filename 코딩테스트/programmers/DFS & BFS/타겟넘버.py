@@ -33,43 +33,20 @@ def bfs(input_lst, target):
     n = len(input_lst)
     count = 0
     idx   = 0
-u    while idx < n:
+    while queue :
         tmp, idx  = queue.popleft()
+        idx +=  1
 
-        if (tmp  == target) & (idx == n):
-            count += 1
-        else:
-            idx += 1
+        if idx < n:
             queue.append([tmp + input_lst[idx],  idx])
-            queue.append([tmp - input_lst[idx],  idx])    
+            queue.append([tmp - input_lst[idx],  idx])
+            
+        else:
+            if tmp == target :
+                count += 1
+        
     return count
 
-bfs([1, 1, 1, 1, 1],3)
+bfs([1, 1, 1, 1, 1], 3)
 
 
-
-# # chekc
-
-# from collections import deque
-# def solution(numbers, target):
-#     answer = 0
-#     queue  = deque()
-#     n = len(numbers)
-#     queue.append([numbers[0],    0])
-#     queue.append([-1*numbers[0], 0])
-#     while queue:
-#         temp, idx = queue.popleft()
-#         idx      += 1
-#         if idx < n:
-#             queue.append([temp+ numbers[idx], idx])
-#             queue.append([temp- numbers[idx], idx])
-#         else:
-#             if temp  == target:
-#                 answer +=  1
-#     return answer
-#     #dafadsfasdfasdfasd
-    
-
-#     # adsgasdfgasdfgasd
-    
-# solution([1, 1, 1, 1, 1], 3)
