@@ -36,17 +36,39 @@ def bfs(input_lst, target):
     while queue :
         tmp, idx  = queue.popleft()
         idx +=  1
-
         if idx < n:
             queue.append([tmp + input_lst[idx],  idx])
             queue.append([tmp - input_lst[idx],  idx])
-            
         else:
             if tmp == target :
                 count += 1
-        
     return count
 
 bfs([1, 1, 1, 1, 1], 3)
 
+def dfs(number, target):
+    if sum(number)== target:
+        pass
+    
 
+
+
+
+
+# 다른 사람 풀이
+def solution(numbers, target):
+    if not numbers and target == 0 :
+        return 1
+    elif not numbers:
+        return 0
+    else:
+        return solution(numbers[1:], target-numbers[0]) + solution(numbers[1:], target+numbers[0])
+
+
+# def test(lst):
+#     if not lst:
+#         print('empty')
+#     else:
+#         print('not empty')
+
+# test([])

@@ -24,5 +24,40 @@ image0.png
 아래와 같이 1개의 네트워크가 있습니다.
 image1.png
 """
+from collections import deque
+def solution(n, lst):
+    
+    queue  = deque()
+ 
+    answer = n
 
-# def solution(lst):
+    queue.append([idx for idx  in range(1, n) if lst[0][idx-1] == 1])   
+    index = 1
+    n = len(lst)
+    while index < n-1:
+        previous_network = queue.popleft()
+        new_network = [idx_1 for idx_1  in range(1, n) if lst[index][idx_1] == 1] # [2,3]
+        
+        common_networt = [i for i in ]
+
+
+        index += 1
+        if 
+
+
+        extended_network = [i for i in new_network if i not in previous_network ]
+
+
+
+
+    # for case in lst: # case: [1, 1, 0]
+    #     if lock == 1:
+    #         total_net.extend([idx for idx in range(1, n) if case[idx-1] == 1])
+    #         lock -= 1
+    #     else:
+    #         cur_net = [idx for idx in range(1, n) if case[idx-1] == 1]
+
+
+
+
+
