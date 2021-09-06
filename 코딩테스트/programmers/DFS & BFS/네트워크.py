@@ -26,26 +26,49 @@ image1.png
 """
 from collections import deque
 def solution(n, lst):
-    
     queue  = deque()
- 
-    answer = n
-
-    queue.append([idx for idx  in range(1, n) if lst[0][idx-1] == 1])   
+    queue.append(lst[0])   # [ 1, 2 ]
+    total_network = [] 
     index = 1
     n = len(lst)
     while index < n-1:
-        previous_network = queue.popleft()
-        new_network = [idx_1 for idx_1  in range(1, n) if lst[index][idx_1] == 1] # [2,3]
         
-        common_networt = [i for i in ]
+        current_network = queue.popleft()
+        total_network.append([current_network])
+        new_network      = lst[index] # [ 2, 3 ]
+
+        for each_network in total_network:
+            common_network   = [i for i in new_network if i in current_network]
+
+        if common_network:
+            current_network= list(set(current_network.extend[new_network]))
+        else:
+            total_network.append([new_network])
+
+        index +=  1
 
 
-        index += 1
-        if 
+print(type(set([1,2,2,2,2,3])))
+print(type(list(set([1,2,2,2,2,3,2]))))
+
+# from collections import deque
+# def solution(n, lst):
+#     queue  = deque()
+#     queue.append([idx for idx  in range(1, n) if lst[0][idx-1] == 1])   # [ 1, 2 ] 
+#     index = 1
+#     n = len(lst)
+#     while index < n-1:
+#         previous_network = queue.popleft()
+#         new_network      = [idx_1 for idx_1  in range(1, n) if lst[index][idx_1-1] == 1] # [ 2, 3 ]
+#         common_network   = [i for i in new_network if i in previous_network]
+        
+
+#         index += 1
+#         if 
 
 
-        extended_network = [i for i in new_network if i not in previous_network ]
+#         extended_network = [i for i in new_network if i not in previous_network ]
+
 
 
 
