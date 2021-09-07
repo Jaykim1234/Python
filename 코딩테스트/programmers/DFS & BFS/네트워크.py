@@ -46,6 +46,7 @@ def solution(n, lst):
             total_network.append([new_network])
 
         index +=  1
+    return total_network
 
 
 print(type(set([1,2,2,2,2,3])))
