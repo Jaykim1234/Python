@@ -27,12 +27,11 @@ image1.png
 from collections import deque
 def solution(n, lst):
     queue  = deque()
-    queue.append(lst[0])   # [ 1, 2 ]
     total_network = [] 
-    index = 1
+    index = 0
     n = len(lst)
-    while index < n-1:
-        
+    while index < n:
+        queue.append(lst[index])
         current_network = queue.popleft()
         total_network.append([current_network])
         new_network      = lst[index] # [ 2, 3 ]
@@ -46,6 +45,7 @@ def solution(n, lst):
             total_network.append([new_network])
 
         index +=  1
+        
     return total_network
 
 
