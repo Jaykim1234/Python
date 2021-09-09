@@ -26,27 +26,83 @@ image1.png
 """
 from collections import deque
 def solution(n, lst):
-    queue  = deque()
     total_network = [] 
     index = 0
-    n = len(lst)
+    queue = deque()
+
     while index < n:
-        queue.append(lst[index])
-        current_network = queue.popleft()
-        total_network.append([current_network])
-        new_network      = lst[index] # [ 2, 3 ]
-
-        for each_network in total_network:
-            common_network   = [i for i in new_network if i in current_network]
-
-        if common_network:
-            current_network= list(set(current_network.extend[new_network]))
-        else:
-            total_network.append([new_network])
-
+        queue.append([idx for idx  in range(1, n) if lst[index][idx-1] == 1])
+        total_network.append(queue.leftpop())
         index +=  1
         
+        if index <= n-1:
+            new_network  = [idx for idx  in range(1, n) if lst[index][idx-1] == 1] 
+
+        index_2 = 0
+
+        while index_2 < n:
+            common_network  = [i for i in new_network if  total_network[index_2]]
+            
+            if common_network:
+                total_network[index_2] = list(set(total_network[index_2].extend[new_network]))
+                break
+            else:
+                total_network.append([new_network])
+            index_2 += 1
+        
     return total_network
+
+solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]])
+
+
+# def solution(n, lst):
+#     total_network = [] 
+#     index = 0
+
+#     while index < n:
+#         total_network.append([lst[index]])
+#         index +=  1
+#         new_network  = lst[index] # [ 2, 3 ]
+
+#         index_2 = 0
+
+#         while index_2 < n:
+#             common_network  = [i for i in new_network if  total_network[index_2]]
+            
+#             if common_network:
+#                 total_network[index_2] = list(set(total_network[index_2].extend[new_network]))
+#                 break
+#             else:
+#                 total_network.append([new_network])
+#             index_2 += 1
+        
+#     return total_network
+
+# solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]])
+
+# from collections import deque
+# def solution(n, lst):
+#     queue  = deque()
+#     total_network = [] 
+#     index = 0
+#     n = len(lst)
+#     while index < n:
+#         queue.append(lst[index])
+#         current_network = queue.popleft()
+#         total_network.append([current_network])
+#         new_network      = lst[index] # [ 2, 3 ]
+
+#         for each_network in total_network:
+#             common_network   = [i for i in new_network if i in current_network]
+
+#             if common_network:
+#                 current_network= list(set(current_network.extend[new_network]))
+#             else:
+#                 total_network.append([new_network])
+
+#         index +=  1
+        
+#     return total_network
 
 
 print(type(set([1,2,2,2,2,3])))
