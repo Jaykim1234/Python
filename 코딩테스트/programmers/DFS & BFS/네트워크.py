@@ -24,6 +24,18 @@ image0.png
 아래와 같이 1개의 네트워크가 있습니다.
 image1.png
 """
+
+def solution(n, computers):
+    answer = 0
+    visited = [False for i in range(n)]
+    for com in range(n):
+        if visited[com] == False:
+            BFS(n, computers, com, visited)
+            answer += 1
+    return answer
+
+
+
 from collections import deque
 def solution(n, lst):
     total_network = [] 
