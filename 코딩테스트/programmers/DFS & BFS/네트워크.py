@@ -25,59 +25,84 @@ image0.png
 image1.png
 """
 
-def solution(n, computers):
-    answer = 0
-    visited = [False for i in range(n)] # False False False  ~~
-    for com in range(n):
-        if visited[com] == False:
-            BFS(n, computers, com, visited)
-            answer += 1
-    return answer
+def solution(n, computer):
+    visited = [False for i in range(n)]
 
-def BFS(n, computers, com, visited):
-    visited[com] = True
+    for net in range(n):
+        if visited[net] == False:
+            pass
+
+def bfs(n, computer, net, visited):
+    visited[net] = True
     queue = []
-    queue.append(com)
-    while len(queue) != 0:
-        com = queue.pop(0)
-        visited[com] = True
-        for connect in range(n):
-            if connect != com and computers[com][connect] == 1:
-                if visited[connect] ==  False:
-                    queue.append(connect)
+    
+    for com in range(n):
 
 
 
 
-from collections import deque
-def solution(n, lst):
-    total_network = [] 
-    index = 0
-    queue = deque()
 
-    while index < n:
-        queue.append([idx for idx  in range(1, n) if lst[index][idx-1] == 1])
-        total_network.append(queue.leftpop())
-        index +=  1
+
+
+
+
+
+# def BFS(n, computers, com, visited):
+#     visited[com] = True
+#     queue = []
+#     queue.append(com)
+#     while len(queue) != 0:
+#         com = queue.pop(0)
+#         visited[com] = True
+#         for connect in range(n):
+#             # 자기 자신을 제외하고 다른 곳에서 1을 가지면
+#             if connect != com and computers[com][connect] == 1:
+#                 if visited[connect] ==  False:
+#                     queue.append(connect)
+
+# def solution(n, computers):
+#     answer = 0
+#     visited = [False for i in range(n)] # False False False  ~~
+#     for com in range(n): # com : 지금 현재의 섬 인덱스
+#         if visited[com] == False:
+#             BFS(n, computers, com, visited)
+#             answer += 1
+#     return answer
+
+
+
+solution(3,	[[1, 1, 0], [1, 1, 0], [0, 0, 1]])
+
+
+# from collections import deque
+# def solution(n, lst):
+#     total_network = [] 
+#     index = 0
+#     queue = deque()
+
+#     while index < n:
+#         queue.append([idx for idx  in range(1, n) if lst[index][idx-1] == 1])
+#         total_network.append(queue.leftpop())
+#         index +=  1
         
-        if index <= n-1:
-            new_network  = [idx for idx  in range(1, n) if lst[index][idx-1] == 1] 
+#         if index <= n-1:
+#             new_network  = [idx for idx  in range(1, n) if lst[index][idx-1] == 1] 
 
-        index_2 = 0
+#         index_2 = 0
 
-        while index_2 < n:
-            common_network  = [i for i in new_network if  total_network[index_2]]
+#         while index_2 < n:
+#             common_network  = [i for i in new_network if  total_network[index_2]]
             
-            if common_network:
-                total_network[index_2] = list(set(total_network[index_2].extend[new_network]))
-                break
-            else:
-                total_network.append([new_network])
-            index_2 += 1
+#             if common_network:
+#                 total_network[index_2] = list(set(total_network[index_2].extend[new_network]))
+#                 break
+#             else:
+#                 total_network.append([new_network])
+#             index_2 += 1
         
-    return total_network
+#     return total_network
 
-solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]])
+# solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]])
 
 
 # def solution(n, lst):
