@@ -27,21 +27,21 @@ image1.png
 
 def solution(n, computer):
     visited = [False for idx in range(n)]
-    answer = 0
+    answer  = 0
     for net in range(n):
-        if visited[net] == False:
+        if  visited[net] == False:
             bfs(n, computer, net, visited)
             answer += 1
-    return answer
+    return  answer
 
 def bfs(n, computer, net, visited):
     visited[net] = True
-    for com in range(n):
-        for i in range(n):
-            if computer[net][i] == 1:
-                if com != net and computer[com][i]==1:
+    for index in range(n):
+        if computer[net][index] == 1:
+            for com in range(n):
+                if com != net and computer[com][index]== 1:
                     visited[com] = True
-          
+
 solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]])
 
 
