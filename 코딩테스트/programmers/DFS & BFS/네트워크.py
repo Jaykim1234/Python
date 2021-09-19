@@ -38,12 +38,12 @@ def bfs(n, computer, net, visited):
     visited[net] = True
     for index in range(n):
         if computer[net][index] == 1:
-            for com in range(n):
-                if com != net and computer[com][index]== 1:
-                    visited[com] = True
+            for net_tmp in range(n):
+                if net_tmp != net and computer[net_tmp][index]== 1:
+                    visited[net_tmp] = True
 
-solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]])
-
+solution(5, [[1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]])
+# solution(3, [[1, 0, 0], [0, 1, 0], [0, 0, 1]])
 
 
 
