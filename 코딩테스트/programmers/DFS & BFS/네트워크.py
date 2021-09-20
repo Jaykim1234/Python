@@ -25,6 +25,7 @@ image0.png
 image1.png
 """
 
+
 def solution(n, computer):
     visited = [False for idx in range(n)]
     answer  = 0
@@ -36,16 +37,37 @@ def solution(n, computer):
 
 def bfs(n, computer, net, visited):
     visited[net] = True
+    queue = []
+    
     for index in range(n):
-        if computer[net][index] == 1:
-            for net_tmp in range(n):
+        if computer[net][index] == 1 :
+            for net_tmp in range(n)  :
                 if net_tmp != net and computer[net_tmp][index]== 1:
                     visited[net_tmp] = True
-
-solution(5, [[1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]])
+solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
+# solution(5, [[1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]])
 # solution(3, [[1, 0, 0], [0, 1, 0], [0, 0, 1]])
 
 
+# def solution(n, computer):
+#     visited = [False for idx in range(n)]
+#     answer  = 0
+#     for net in range(n):
+#         if  visited[net] == False:
+#             bfs(n, computer, net, visited)
+#             answer += 1
+#     return  answer
+
+# def bfs(n, computer, net, visited):
+#     visited[net] = True
+#     queue = []
+    
+#     for index in range(n):
+#         if computer[net][index] == 1 :
+#             for net_tmp in range(n)  :
+#                 if net_tmp != net and computer[net_tmp][index]== 1:
+#                     visited[net_tmp] = True
+# solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
 
 
 
