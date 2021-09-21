@@ -26,26 +26,26 @@ image1.png
 """
 
 
-def solution(n, computer):
-    visited = [False for idx in range(n)]
-    answer  = 0
-    for net in range(n):
-        if  visited[net] == False:
-            bfs(n, computer, net, visited)
-            answer += 1
-    return  answer
+# def solution(n, computer):
+#     visited = [False for idx in range(n)]
+#     answer  = 0
+#     for net in range(n):
+#         if  visited[net] == False:
+#             bfs(n, computer, net, visited)
+#             answer += 1
+#     return  answer
 
-def bfs(n, computer, net, visited):
-    visited[net] = True
-    queue = []
-    queue.append(net)
-    while len(queue) != 0:
-        net = queue.pop()
-        visited[net] = True
-        for net_tmp in range(n)  :
-            if net_tmp != net and computer[net][net_tmp]== 1:
-                queue.append(net_tmp)
-solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
+# def bfs(n, computer, net, visited):
+#     visited[net] = True
+#     queue = []
+#     queue.append(net)
+#     while len(queue) != 0:
+#         net = queue.pop()
+#         visited[net] = True
+#         for net_tmp in range(n)  :
+#             if net_tmp != net and computer[net][net_tmp]== 1:
+#                 queue.append(net_tmp)
+# solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
 # solution(5, [[1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]])
 # solution(3, [[1, 0, 0], [0, 1, 0], [0, 0, 1]])
 
@@ -61,9 +61,16 @@ def solution(n, computer):
 
 def bfs(n, computer, net, visited):
     visited[net] = True
-    for index in range(n):
-        if computer[net][index] == 1 :
-            visited[index] = True
+    queue = []
+    queue.append(net)
+    while len(queue) != 0:
+        cur_com =  queue.pop(0)
+        visited[cur_com] = True
+        for connect in range(n):
+            if connect != cur_com and  computer[cur_com][connect] == 1 :
+                queue.append(connect)
+
+
 solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
 
 
