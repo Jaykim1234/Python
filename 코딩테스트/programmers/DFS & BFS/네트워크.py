@@ -66,9 +66,9 @@ def bfs(n, computer, net, visited):
     while len(queue) != 0:
         cur_com =  queue.pop(0)
         visited[cur_com] = True
-        for connect in range(n):
-            if connect != cur_com and  computer[cur_com][connect] == 1 :
-                queue.append(connect)
+        for connection in range(n):
+            if connection != cur_com & computer[cur_com][connection] == 1 :
+                queue.append(connection)
 
 
 solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
