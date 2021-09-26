@@ -67,11 +67,12 @@ def bfs(n, computer, net, visited):
         cur_com =  queue.pop(0)
         visited[cur_com] = True
         for connection in range(n):
-            if connection != cur_com & computer[cur_com][connection] == 1 :
+            if connection != net & computer[cur_com][connection] == 1 :
+                computer[cur_com][connection] == 2
                 queue.append(connection)
 
 
-solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
+solution(4, [[1, 1, 0, 1], [1, 1, 0, 1], [0, 0, 1, 1], [1, 0, 1, 1]])
 
 
 
