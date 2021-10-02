@@ -15,6 +15,7 @@ computer[i][i]는 항상 1입니다.
 n	computers	return
 3	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]	2
 3	[[1, 1, 0], [1, 1, 1], [0, 1, 1]]	1
+
 입출력 예 설명
 예제 #1
 아래와 같이 2개의 네트워크가 있습니다.
@@ -26,58 +27,53 @@ image1.png
 """
 
 
+def solution(n, computers):
+    visit = [False for i in range(n)]
+    ans = 0
+    for cur in range(n):
+        if visit[cur] == False:
+            dfs(n, computers, visit, cur)
+            ans += 1
+    return ans
+
+def dfs(n, computers, visit, cur):
+    visit[cur] = True
+    for s_idx in range(n):
+        if computers[cur][s_idx] == 1 and s_idx != cur and  visit[s_idx] == False:
+            dfs(n, computers, visit, s_idx)
+
+
+    
+
+    
+
+
+
+
 # def solution(n, computer):
 #     visited = [False for idx in range(n)]
 #     answer  = 0
-#     for net in range(n):
-#         if  visited[net] == False:
-#             bfs(n, computer, net, visited)
+#     for com in range(n):
+#         if  visited[com] == False:
+#             bfs(n, computer, com, visited)
 #             answer += 1
 #     return  answer
 
-# def bfs(n, computer, net, visited):
-#     visited[net] = True
+# def bfs(n, computer, com, visited):
+#     visited[com] = True
 #     queue = []
-#     queue.append(net)
+#     queue.append(com) 
 #     while len(queue) != 0:
-#         net = queue.pop()
-#         visited[net] = True
-#         for net_tmp in range(n)  :
-#             if net_tmp != net and computer[net][net_tmp]== 1:
-#                 queue.append(net_tmp)
-# solution(4, [[1, 1, 0, 1], [1, 1, 0, 0], [0, 0, 1, 1], [1, 0, 1, 1]])
-# solution(5, [[1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [1, 0, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]])
-# solution(3, [[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+#         com =  queue.pop(0)
+#         visited[com] = True
+#         for connect in range(n):
+#             if connect != com and computer[com][connect] == 1 :
+#                 if visited[connect] == False:
+#                 # computer[cur_com][connection] == 2
+#                     queue.append(connect)
 
 
-def solution(n, computer):
-    visited = [False for idx in range(n)]
-    answer  = 0
-    for net in range(n):
-        if  visited[net] == False:
-            bfs(n, computer, net, visited)
-            answer += 1
-    return  answer
-
-def bfs(n, computer, net, visited):
-    visited[net] = True
-    queue = []
-    queue.append(net) 
-    while len(queue) != 0:
-        cur_com =  queue.pop(0)
-        visited[cur_com] = True
-        for connection in range(n):
-            if connection != net & computer[cur_com][connection] == 1 :
-                if visited[connection] == False:
-                # computer[cur_com][connection] == 2
-                    queue.append(connection)
-
-
-solution(4, [[1, 1, 0, 1], [1, 1, 0, 1], [0, 0, 1, 0], [1, 0, 1, 1]])
-
-
-
-
+# solution(4, [[1, 1, 0, 1], [1, 1, 0, 1], [0, 0, 1, 0], [1, 0, 1, 1]])
 
 # def BFS(n, computers, com, visited):
 #     visited[com] = True
@@ -103,121 +99,121 @@ solution(4, [[1, 1, 0, 1], [1, 1, 0, 1], [0, 0, 1, 0], [1, 0, 1, 1]])
 
 
 
-solution(3,	[[1, 1, 0], [1, 1, 0], [0, 0, 1]])
+# solution(3,	[[1, 1, 0], [1, 1, 0], [0, 0, 1]])
 
 
 # from collections import deque
-# def solution(n, lst):
-#     total_network = [] 
+# def solution(n, visit):
+#     total_comwork = [] 
 #     index = 0
 #     queue = deque()
 
 #     while index < n:
-#         queue.append([idx for idx  in range(1, n) if lst[index][idx-1] == 1])
-#         total_network.append(queue.leftpop())
+#         queue.append([idx for idx  in range(1, n) if visit[index][idx-1] == 1])
+#         total_comwork.append(queue.leftpop())
 #         index +=  1
         
 #         if index <= n-1:
-#             new_network  = [idx for idx  in range(1, n) if lst[index][idx-1] == 1] 
+#             new_comwork  = [idx for idx  in range(1, n) if visit[index][idx-1] == 1] 
 
 #         index_2 = 0
 
 #         while index_2 < n:
-#             common_network  = [i for i in new_network if  total_network[index_2]]
+#             common_comwork  = [i for i in new_comwork if  total_comwork[index_2]]
             
-#             if common_network:
-#                 total_network[index_2] = list(set(total_network[index_2].extend[new_network]))
+#             if common_comwork:
+#                 total_comwork[index_2] = list(set(total_comwork[index_2].extend[new_comwork]))
 #                 break
 #             else:
-#                 total_network.append([new_network])
+#                 total_comwork.append([new_comwork])
 #             index_2 += 1
         
-#     return total_network
+#     return total_comwork
 
 # solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]])
 
 
-# def solution(n, lst):
-#     total_network = [] 
+# def solution(n, visit):
+#     total_comwork = [] 
 #     index = 0
 
 #     while index < n:
-#         total_network.append([lst[index]])
+#         total_comwork.append([visit[index]])
 #         index +=  1
-#         new_network  = lst[index] # [ 2, 3 ]
+#         new_comwork  = visit[index] # [ 2, 3 ]
 
 #         index_2 = 0
 
 #         while index_2 < n:
-#             common_network  = [i for i in new_network if  total_network[index_2]]
+#             common_comwork  = [i for i in new_comwork if  total_comwork[index_2]]
             
-#             if common_network:
-#                 total_network[index_2] = list(set(total_network[index_2].extend[new_network]))
+#             if common_comwork:
+#                 total_comwork[index_2] = list(set(total_comwork[index_2].extend[new_comwork]))
 #                 break
 #             else:
-#                 total_network.append([new_network])
+#                 total_comwork.append([new_comwork])
 #             index_2 += 1
         
-#     return total_network
+#     return total_comwork
 
 # solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]])
 
 # from collections import deque
-# def solution(n, lst):
+# def solution(n, visit):
 #     queue  = deque()
-#     total_network = [] 
+#     total_comwork = [] 
 #     index = 0
-#     n = len(lst)
+#     n = len(visit)
 #     while index < n:
-#         queue.append(lst[index])
-#         current_network = queue.popleft()
-#         total_network.append([current_network])
-#         new_network      = lst[index] # [ 2, 3 ]
+#         queue.append(visit[index])
+#         current_comwork = queue.popleft()
+#         total_comwork.append([current_comwork])
+#         new_comwork      = visit[index] # [ 2, 3 ]
 
-#         for each_network in total_network:
-#             common_network   = [i for i in new_network if i in current_network]
+#         for each_comwork in total_comwork:
+#             common_comwork   = [i for i in new_comwork if i in current_comwork]
 
-#             if common_network:
-#                 current_network= list(set(current_network.extend[new_network]))
+#             if common_comwork:
+#                 current_comwork= list(set(current_comwork.extend[new_comwork]))
 #             else:
-#                 total_network.append([new_network])
+#                 total_comwork.append([new_comwork])
 
 #         index +=  1
         
-#     return total_network
+#     return total_comwork
 
 
 print(type(set([1,2,2,2,2,3])))
 print(type(list(set([1,2,2,2,2,3,2]))))
 
 # from collections import deque
-# def solution(n, lst):
+# def solution(n, visit):
 #     queue  = deque()
-#     queue.append([idx for idx  in range(1, n) if lst[0][idx-1] == 1])   # [ 1, 2 ] 
+#     queue.append([idx for idx  in range(1, n) if visit[0][idx-1] == 1])   # [ 1, 2 ] 
 #     index = 1
-#     n = len(lst)
+#     n = len(visit)
 #     while index < n-1:
-#         previous_network = queue.popleft()
-#         new_network      = [idx_1 for idx_1  in range(1, n) if lst[index][idx_1-1] == 1] # [ 2, 3 ]
-#         common_network   = [i for i in new_network if i in previous_network]
+#         previous_comwork = queue.popleft()
+#         new_comwork      = [idx_1 for idx_1  in range(1, n) if visit[index][idx_1-1] == 1] # [ 2, 3 ]
+#         common_comwork   = [i for i in new_comwork if i in previous_comwork]
         
 
 #         index += 1
 #         if 
 
 
-#         extended_network = [i for i in new_network if i not in previous_network ]
+#         extended_comwork = [i for i in new_comwork if i not in previous_comwork ]
 
 
 
 
 
-    # for case in lst: # case: [1, 1, 0]
+    # for case in visit: # case: [1, 1, 0]
     #     if lock == 1:
-    #         total_net.extend([idx for idx in range(1, n) if case[idx-1] == 1])
+    #         total_com.extend([idx for idx in range(1, n) if case[idx-1] == 1])
     #         lock -= 1
     #     else:
-    #         cur_net = [idx for idx in range(1, n) if case[idx-1] == 1]
+    #         cur_com = [idx for idx in range(1, n) if case[idx-1] == 1]
 
 
 
