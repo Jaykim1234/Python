@@ -26,23 +26,26 @@ begin	target	words	return
 예제 #2
 target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다."""
 
-print(set('hot'))
+print(len(set('hot') -set('ho')))
 
 def solution(begin, target, words):
-    words_count = len(words[0])
+    words_count = len(words)
     lst = [False for i in range(len(words))]
     answer = words_count
-    queue = []
+    queue  = []
     queue.append([lst, 0, begin])
 
     while queue:    
         cur_lst, round_c, current_word = queue.pop(0)
+
+        if round_c == words_count and current_word != target:
+            cur_lst, round_c, current_word = queue.pop(0)
+
         round_c += 1
         
         for idx in range(len(words)):
             if cur_lst[idx] == False:
-                
-                if set(current_word + words[idx]) == words_count + 1:
+                if len(set(current_word) - set(words[idx])) ==  1:
                     cur_lst[idx] = True
                     
                     if words[idx] == target:
