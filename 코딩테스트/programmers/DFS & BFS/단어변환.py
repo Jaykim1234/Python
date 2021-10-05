@@ -36,23 +36,23 @@ def solution(begin, target, words):
     queue.append([lst, 0, begin])
 
     while queue:    
-        cur_lst, round_c, current_word = queue.pop(0)
-
+        
         if round_c == words_count and current_word != target:
+            queue.pop(0)
+
+        else:
             cur_lst, round_c, current_word = queue.pop(0)
 
-        round_c += 1
-        
-        for idx in range(len(words)):
-            if cur_lst[idx] == False:
-                if len(set(current_word) - set(words[idx])) ==  1:
-                    cur_lst[idx] = True
-                    
-                    if words[idx] == target:
-                        answer = min(answer, round_c)
-                    else:
-                        queue.append([cur_lst, round_c, words[idx]])
-        
+            for idx in range(words_count):
+                if cur_lst[idx] == False:
+                    if len(set(current_word) - set(words[idx])) ==  1:
+                        cur_lst[idx] = True
+                        if words[idx] == target:
+                            answer = min(answer, round_c)
+                        else:
+                            queue.append([cur_lst, round_c + 1, words[idx]])
+            round_c += 1
+
     return answer
 
 
