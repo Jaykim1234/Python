@@ -28,13 +28,27 @@ target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다."""
 
 print(len(set('hot') -set('ho')))
 
-def solution(begin, target, words):
+
+def checker(lst1, lst2):
+    check = 0
+    for i in range(len(lst1)):
+        if lst1[i] == lst2[i]:
+            check += 1
+    if check == len(lst1) -1:
+        return True
+    else:
+        return False
+
+    
+import copy
+def bfs(begin, target, words):
     words_count = len(words)
     lst = [False for i in range(len(words))]
     answer = words_count
     queue  = []
-    queue.append([lst, 0, begin])
-
+    round_c = 0
+    queue.append([lst, round_c, begin])
+    Find = False
     while queue:    
         
         if round_c == words_count and current_word != target:
@@ -45,18 +59,18 @@ def solution(begin, target, words):
 
             for idx in range(words_count):
                 if cur_lst[idx] == False:
-                    if len(set(current_word) - set(words[idx])) ==  1:
-                        cur_lst[idx] = True
+                    if checker(current_word, words[idx]) ==  True:    
+                        new_lst = copy.deepcopy(cur_lst)
+                        new_lst[idx] = True 
+
                         if words[idx] == target:
-                            answer = min(answer, round_c)
+                            answer = min(answer, round_c + 1)
+                            Find = True
                         else:
-                            queue.append([cur_lst, round_c + 1, words[idx]])
+                            queue.append([new_lst, round_c + 1, words[idx]])
             round_c += 1
+    return answer if Find == True else 0
 
-    return answer
-
-
-
+print(bfs("hit","cog",["hot", "dot", "dog", "lot", "log", "cog"]))
 
 
-    pass
