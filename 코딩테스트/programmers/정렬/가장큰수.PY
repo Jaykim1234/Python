@@ -17,14 +17,18 @@ numbers	return
 [3, 30, 34, 5, 9]	"9534330"
 """
 
+lst =[3, 30, 34, 5, 9]
+
+
 def solution(lst):
-    import itertools
-    lst2 = list(map(str, lst))
-    npr = list(map(''.join, list(itertools.permutations(lst2, len(lst)))))
+    ans_num = ''
+
+    for round in range(len(lst)):
+        tmp = ''
+        while True:
+            
+
     
-
-
-
 
 
 def solution(lst):
