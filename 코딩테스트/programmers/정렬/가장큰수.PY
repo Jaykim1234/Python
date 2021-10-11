@@ -22,7 +22,17 @@ lst =[3, 30, 34, 5, 9]
 
 def solution(lst):
     ans_num = ''
+    str_lst = map(str, lst)
 
+    max_length = 0
+    count_len = []
+
+    for r in str_lst:
+        max_length = max(max_length, len(r))
+        count_len.append(len(r))
+        
+    count_len = sorted(count_len)
+    
     for round in range(len(lst)):
         tmp = ''
         while True:
