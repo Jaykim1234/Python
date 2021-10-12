@@ -36,8 +36,21 @@ def solution(lst):
     for round in range(len(lst)):
         tmp = ''
         while True:
+            pass
             
 
+def solution(lst):
+    lst2 = list(map(str, lst))
+    import itertools
+    npr = list(itertools.permutations(lst2, len(lst)))
+    npr2= list(map(''.join, npr))
+    npr3 = list(map(int, npr2))
+
+    max_num = 0
+
+    for each_num in npr3:
+        max_num = max(max_num, each_num)
+    return max_num
     
 
 
