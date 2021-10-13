@@ -17,8 +17,21 @@ numbers	return
 [3, 30, 34, 5, 9]	"9534330"
 """
 
-lst =[3, 30, 34, 5, 9]
+lst =[3, 30, 34, 905, 5, 9]
 
+def solution1(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=lambda x: x * 3, reverse=True)
+    print(numbers)
+    return str(int(''.join(numbers)))
+
+solution1(lst)
+
+print(sorted(list(map(lambda x: x*3,['3', '30', '34', '905', '5', '9']))))
+
+print(sorted(['905905905','9'*3]))
+
+print('905'*3)
 
 def solution(lst):
     ans_num = ''
