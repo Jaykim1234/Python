@@ -19,6 +19,9 @@ numbers	return
 
 lst =[3, 30, 34, 905, 5, 9]
 
+
+
+## Time error
 def solution1(numbers):
     numbers = list(map(str, numbers))
     numbers.sort(key=lambda x: x * 3, reverse=True)
