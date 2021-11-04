@@ -18,6 +18,25 @@ citations	return
 ※ 공지 - 2019년 2월 28일 테스트 케이스가 추가되었습니다.
 """
 
-# def solution(lst):
+def solution(lst):
+    lst = sorted(lst)
+    for idx_1 in range(len(lst)):
+        up_equal_count = 0
+        down_count = 0
+
+        while True:
+            for idx_2 in range(len(lst)):
+                if lst[idx_1] >= lst[idx_2]:
+                    up_equal_count += 1
+                else:
+                    down_count += 1
+            return lst[idx_1]
+
+
+solution([3, 0, 6, 1, 5])
+
+# print(sorted([1,5,2,8,3]))
+
+
 
 # n편 중, h번 이상 인용된 논문이 h편 '이상'이고 나머지 논문이 h번 이하 인용
