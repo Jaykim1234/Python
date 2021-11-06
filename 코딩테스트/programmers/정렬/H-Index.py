@@ -32,6 +32,8 @@ def solution(lst):
                     down_count += 1
             return lst[idx_1]
 
+Dbvjhk
+
 
 solution([3, 0, 6, 1, 5])
 
