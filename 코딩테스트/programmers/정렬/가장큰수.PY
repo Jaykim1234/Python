@@ -20,8 +20,15 @@ numbers	return
 lst =[3, 30, 34, 905, 5, 9]
 
 
+def solution0(number):
+    return sorted(list(map(lambda x: str(x)*3, [3, 30, 34, 905, 5, 9]))
 
-## Time error
+solution0(lst)
+
+
+
+solution_0(lst)
+
 def solution1(numbers):
     numbers = list(map(str, numbers))
     numbers.sort(key=lambda x: x * 3, reverse=True)
@@ -29,6 +36,17 @@ def solution1(numbers):
     return str(int(''.join(numbers)))
 
 solution1(lst)
+
+
+lst =[3, 30, 34, 905, 5, 9]
+
+def solution1(number):
+
+    return sorted(list(map(lambda x: str(x)*3, [3, 30, 34, 905, 5, 9]))
+
+solution1(lst)
+
+
 
 print(sorted(list(map(lambda x: x*3,['3', '30', '34', '905', '5', '9']))))
 

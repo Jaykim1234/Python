@@ -13,6 +13,7 @@ H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 
 citations	return
 [3, 0, 6, 1, 5]	3 
 0 1 3 5 6
+
 5-2
 
 위에가 3개 이상 있어야 되고 밑에꺼는 3이하이여야 한다.
@@ -21,6 +22,17 @@ citations	return
 
 ※ 공지 - 2019년 2월 28일 테스트 케이스가 추가되었습니다.
 """
+
+def solution(lst):
+    lst = sorted(lst)
+    length = len(lst)
+    middle_spot = length//2 
+    middle_spot_num = lst[length//2] 
+
+    if middle_spot_num >= length - middle_spot  
+
+
+    
 
 def solution(lst):
     lst = sorted(lst)
@@ -40,16 +52,9 @@ def solution(lst):
     else:
         if middle_spot_num >= length - middle_spot:
             while  (middle_spot_num_next >  length - middle_spot) and (middle_spot_num <= length - middle_spot) :
-
-
-            
+                pass
         elif middle_spot_num <= length - middle_spot: # 가운데 있는 수 보다 큰 숫자들의 개수가 가운데 있는 수 보다 크거나 같을 때
             return solution(lst[middle_spot::])
-
-
-
-
-print([3, 0, 6, 1, 5][:3])
 
 solution([3, 0, 6, 1, 5])
 
