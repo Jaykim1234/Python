@@ -17,17 +17,16 @@ numbers	return
 [3, 30, 34, 5, 9]	"9534330"
 """
 
-lst =[3, 30, 34, 905, 5, 9]
+lst =[3, 30, 34, 5, 9]
+
+def solution(lst):
+    sorted_lst = map(str, sorted(lst, key = lambda x: str(x)*3 , reverse = True))
+    return str(int(''.join(sorted_lst))) 
 
 
-def solution0(number):
-    return sorted(list(map(lambda x: str(x)*3, [3, 30, 34, 905, 5, 9]))
-
-solution0(lst)
+solution(lst)
 
 
-
-solution_0(lst)
 
 def solution1(numbers):
     numbers = list(map(str, numbers))
