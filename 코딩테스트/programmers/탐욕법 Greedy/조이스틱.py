@@ -29,31 +29,47 @@ name	return
 # 위 아래 방향 찾기
 # 좌 우 최적 값 찾기
 
-"AERAEA"
-6
-1245
-['a','a'].index('b')
+def solution(string):
+    lst = [1,1,1,1,1]
+    
+    if max(lst) == 0:
+        return 0
+    
+    while max(lst) == 0:
+        if lst[idx_0] == 0:
+            r_left(string, 0)
+
+
 
 def r_left(string, idx):
     count = 0
     directions = [-1, 1]
- 
-    if 'A' not in string:
-        return True
-        
+    count_lst = []
+
+    if string[idx] != 'A':
+        return 0, idx
+
     for direction in directions:
         while string[idx] != 'A':
             idx += direction
             count += 1
-            if idx == len(string) :
+            if idx == len(string):
                 idx = 0
-            elif idx <0 :
-                idx = len(string)
-        count = min(count, 100**1000)\
-    
+            elif idx < 0:
+                idx = len(string) -1
+        count_lst.append(count,idx)
+  
+    return count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
+
+def updown(string, idx):
+    count = 0
+    if (ord(string[idx]) - ord('A')) < (ord('Z')- ord(string[idx])):
+        count += ord(string[idx]) - ord('A')
+    else:
+        count += ord('Z')- ord(string[idx]) + 1
     return count
 
-r_left("JAN", 0)
+
 
 #    current_loc = [0 if string[i] != 'A' else 1 for i in range(len(string)) ]
     
