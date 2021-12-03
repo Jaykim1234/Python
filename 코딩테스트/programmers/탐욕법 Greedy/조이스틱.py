@@ -29,25 +29,22 @@ name	return
 # 위 아래 방향 찾기
 # 좌 우 최적 값 찾기
 
+
 def solution(string):
-    lst = [1,1,1,1,1]
-    
-    if max(lst) == 0:
-        return 0
-    
-    while max(lst) == 0:
-        if lst[idx_0] == 0:
-            r_left(string, 0)
-
-
-
-def r_left(string, idx):
     count = 0
+    check = [False if s != 'A' else True for s in string]
+    
+    if set(check) == {True}:
+        return 0
+    idx = 0
+    while set(check) == {True}:
+        add_hori, idx = r_left(string, idx)
+        add_ud, check  = updown(string, idx, check)
+        count += add_hori + add_ud
+
+def r_left(string, count, idx):
     directions = [-1, 1]
     count_lst = []
-
-    if string[idx] != 'A':
-        return 0, idx
 
     for direction in directions:
         while string[idx] != 'A':
@@ -58,16 +55,19 @@ def r_left(string, idx):
             elif idx < 0:
                 idx = len(string) -1
         count_lst.append(count,idx)
-  
-    return count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
 
-def updown(string, idx):
+    optimal_r = count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
+    
+    return optimal_r
+
+def updown(string, idx, check):
     count = 0
+    check[idx] = True
     if (ord(string[idx]) - ord('A')) < (ord('Z')- ord(string[idx])):
         count += ord(string[idx]) - ord('A')
     else:
         count += ord('Z')- ord(string[idx]) + 1
-    return count
+    return count, check
 
 
 
