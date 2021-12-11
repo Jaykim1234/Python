@@ -28,25 +28,12 @@ name	return
 """
 # 위 아래 방향 찾기
 # 좌 우 최적 값 찾기
-
-
-def solution(string):
-    count = 0
-    check = [False if s != 'A' else True for s in string]
-    
-    if set(check) == {True}:
-        return 0
-    idx = 0
-    while set(check) == {True}:
-        add_hori, idx = r_left(string, idx)
-        add_ud, check  = updown(string, idx, check)
-        count += add_hori + add_ud
-
-def r_left(string, count, idx):
+def r_left(string, idx):
     directions = [-1, 1]
     count_lst = []
 
     for direction in directions:
+        count = 0
         while string[idx] != 'A':
             idx += direction
             count += 1
@@ -54,11 +41,9 @@ def r_left(string, count, idx):
                 idx = 0
             elif idx < 0:
                 idx = len(string) -1
-        count_lst.append(count,idx)
+        count_lst.append([count,idx])
 
-    optimal_r = count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
-    
-    return optimal_r
+    return  count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
 
 def updown(string, idx, check):
     count = 0
@@ -69,8 +54,20 @@ def updown(string, idx, check):
         count += ord('Z')- ord(string[idx]) + 1
     return count, check
 
+def solution(string):
+    count = 0
+    check = [False if s != 'A' else True for s in string]
+    
+    if set(check) == {True}:
+        return 0
+    idx = 0
+    while set(check) != {True}:
+        add_hori, idx = r_left(string, idx)
+        add_ud, check  = updown(string, idx, check)
+        count += add_hori + add_ud
+    return count
 
-
+solution("JEROEN")
 #    current_loc = [0 if string[i] != 'A' else 1 for i in range(len(string)) ]
     
     # idx_lst = [idx for idx in range(len(string)) if string[idx] != 'A' ]
@@ -82,34 +79,25 @@ def updown(string, idx, check):
 
 
 
-def updown(idx, string):
-    count = 0
-    if (ord(string[idx]) - ord('A')) < (ord('Z')- ord(string[idx])):
-        count += ord(string[idx]) - ord('A')
-    else:
-        count += ord('Z')- ord(string[idx]) + 1
-    return count
-
-
-
-
-
-
-
-
-
+# def updown(idx, string):
+#     count = 0
+#     if (ord(string[idx]) - ord('A')) < (ord('Z')- ord(string[idx])):
+#         count += ord(string[idx]) - ord('A')
+#     else:
+#         count += ord('Z')- ord(string[idx]) + 1
+#     return count
 
 
        
 
-location = [0 if i == 'A' else 1 for i in string]
+# location = [0 if i == 'A' else 1 for i in string]
 
-def solution(string):
+# def solution(string):
 
-string = "JEROEN"
-[0 if i == 'A' else '1' for i in string]
+# string = "JEROEN"
+# [0 if i == 'A' else '1' for i in string]
 
 
-print(ord('J')- ord('A'))
-print(ord('N')- ord('A'))
-print(ord('Z')- ord('N'))
+# print(ord('J')- ord('A'))
+# print(ord('N')- ord('A'))
+# print(ord('Z')- ord('N'))
