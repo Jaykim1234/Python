@@ -67,7 +67,7 @@ def solution(string):
         count += add_hori + add_ud
     return count
 
-solution("JEROEN")
+print(solution("JEROEN"))
 #    current_loc = [0 if string[i] != 'A' else 1 for i in range(len(string)) ]
     
     # idx_lst = [idx for idx in range(len(string)) if string[idx] != 'A' ]
