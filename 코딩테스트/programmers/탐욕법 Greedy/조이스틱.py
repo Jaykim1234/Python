@@ -26,8 +26,10 @@ name	return
 "JEROEN"	56
 "JAN"	    23
 """
+print('cs')
 # 위 아래 방향 찾기
 # 좌 우 최적 값 찾기
+
 def r_left(string, idx):
     directions = [-1, 1]
     count_lst = []
@@ -68,6 +70,7 @@ def solution(string):
     return count
 
 print(solution("JEROEN"))
+
 #    current_loc = [0 if string[i] != 'A' else 1 for i in range(len(string)) ]
     
     # idx_lst = [idx for idx in range(len(string)) if string[idx] != 'A' ]
