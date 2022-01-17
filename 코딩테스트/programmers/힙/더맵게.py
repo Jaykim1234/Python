@@ -26,3 +26,23 @@ scoville	K	return
 
 모든 음식의 스코빌 지수가 7 이상이 되었고 이때 섞은 횟수는 2회입니다.
 """
+
+
+lst1 = [1, 2, 3, 9, 10, 12]
+
+def solution(inp_lst, k):
+
+    while True: 
+
+        a = inp_lst.pop(0)
+        b = inp_lst.pop(0)
+        idx = 0
+        while a +b*2 > inp_lst[idx]:
+            if min(inp_lst) > k:
+                return inp_lst
+            idx += 1
+        inp_lst.insert(idx, a +b*2)
+
+    return inp_lst
+
+solution(lst1, 7)

@@ -26,7 +26,7 @@ name	return
 "JEROEN"	56
 "JAN"	    23
 """
-print('cs')
+
 # 위 아래 방향 찾기
 # 좌 우 최적 값 찾기
 
