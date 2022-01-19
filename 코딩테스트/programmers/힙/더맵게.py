@@ -30,19 +30,40 @@ scoville	K	return
 
 lst1 = [1, 2, 3, 9, 10, 12]
 
+# 1st trial
+# 
+# def solution(inp_lst, k):
+#     count = 0
+#     while True: 
+#         count += 1
+#         a = inp_lst.pop(0)
+#         b = inp_lst.pop(0)
+#         idx = 0
+#         while a +b*2 > inp_lst[idx]:
+#             if inp_lst[0] > k:
+#                 return count
+#             idx += 1
+#         inp_lst.insert(idx, a +b*2)
+
+
+# solution(lst1, 7)
+
+
+# 2nd
+
+import heapq
+
 def solution(inp_lst, k):
 
-    while True: 
-
-        a = inp_lst.pop(0)
-        b = inp_lst.pop(0)
-        idx = 0
-        while a +b*2 > inp_lst[idx]:
-            if min(inp_lst) > k:
-                return inp_lst
-            idx += 1
-        inp_lst.insert(idx, a +b*2)
-
-    return inp_lst
-
-solution(lst1, 7)
+    heapq.heapify(inp_lst)
+    count = 0
+    while inp_lst[0] < k: 
+        count += 1
+        a = heapq.heappop(inp_lst)
+        b = heapq.heappop(inp_lst)
+        heapq.heappush(inp_lst, a+2*b)
+        
+        if len(inp_lst) == 1 and inp_lst[0]<k:
+            return -1
+        
+    return count
