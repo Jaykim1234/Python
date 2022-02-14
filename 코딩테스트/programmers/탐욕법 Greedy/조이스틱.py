@@ -30,57 +30,103 @@ name	return
 # 위 아래 방향 찾기
 # 좌 우 최적 값 찾기
 
-def r_left(string, idx):
-    directions = [-1, 1]
-    count_lst = []
+# 02-13 다시 풀기
 
-    for direction in directions:
-        count = 0
-        while string[idx] != 'A':
-            idx += direction
-            count += 1
-            if idx == len(string):
-                idx = 0
-            elif idx < 0:
-                idx = len(string) -1
-        count_lst.append([count,idx])
+inp_string = "BBABAB"
 
-    return  count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
 
-def updown(string, idx, check):
-    count = 0
-    check[idx] = True
-    if (ord(string[idx]) - ord('A')) < (ord('Z')- ord(string[idx])):
-        count += ord(string[idx]) - ord('A')
-    else:
-        count += ord('Z')- ord(string[idx]) + 1
-    return count, check
+def solution(inp_string):
+    ud_change = [ min((ord(i) - ord('A')), (ord('Z')- ord(i)+1)) for i in inp_string]
+    idx, answer = 0, sum(ud_change)
 
-def solution(string):
-    count = 0
-    check = [False if s != 'A' else True for s in string]
-    
-    if set(check) == {True}:
+    if answer == 0:
         return 0
-    idx = 0
-    while set(check) != {True}:
-        add_hori, idx = r_left(string, idx)
-        add_ud, check  = updown(string, idx, check)
-        count += add_hori + add_ud
-    return count
 
-print(solution("JEROEN"))
+    while True:
+        left, right = 1, 1
+
+        while inp_string[idx - left] == 'A':
+            left += 1
+
+        while inp_string[idx + right] == 'A':
+            right += 1
+
+        answer += left if left == min(left, right) else right
+        idx += -left if left == min(left, right) else right 
+
+    return answer
+
+solution(inp_string)
+
+# https://jokerldg.github.io/algorithm/2021/05/24/joystick.html
+
+
+# def solution(ans_string):
+#     a_string = 'A'*len(ans_string)
+#     idx = 0
+#     while a_string != ans_string:
+#         if ans_string[idx] == a_string[idx]:
+#             idx += 1
+#             answer += 1
+#         while ans_string[idx] == a_string[idx]:
+#             idx += 1
+#             answer += 1 
+# solution(ans_string)
+        
+
+
+
+
+
+
+# def r_left(string, idx):
+#     directions = [-1, 1]
+#     count_lst = []
+
+#     for direction in directions:
+#         count = 0
+#         while string[idx] != 'A':
+#             idx += direction
+#             count += 1
+#             if idx == len(string):
+#                 idx = 0
+#             elif idx < 0:
+#                 idx = len(string) -1
+#         count_lst.append([count,idx])
+
+#     return  count_lst[0] if count_lst[0][0] > count_lst[1][0] else count_lst[1]
+
+# def updown(string, idx, check):
+#     count = 0
+#     check[idx] = True
+#     if (ord(string[idx]) - ord('A')) < (ord('Z')- ord(string[idx])):
+#         count += ord(string[idx]) - ord('A')
+#     else:
+#         count += ord('Z')- ord(string[idx]) + 1
+#     return count, check
+
+# def solution(string):
+#     count = 0
+#     check = [False if s != 'A' else True for s in string]
+    
+#     if set(check) == {True}:
+#         return 0
+#     idx = 0
+#     while set(check) != {True}:
+#         add_hori, idx = r_left(string, idx)
+#         add_ud, check  = updown(string, idx, check)
+#         count += add_hori + add_ud
+#     return count
+
+# print(solution("JEROEN"))
 
 #    current_loc = [0 if string[i] != 'A' else 1 for i in range(len(string)) ]
-    
     # idx_lst = [idx for idx in range(len(string)) if string[idx] != 'A' ]
     # for idx_1 in range(len(idx_lst)):
     #     if idx_1 + 1 != len(idx_lst):
     #         if (idx_lst[idx_1+1] - idx_lst[idx_1]) < len(string)
     #     else:
     #         if idx`` 
-
-
 
 # def updown(idx, string):
 #     count = 0
