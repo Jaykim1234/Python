@@ -48,6 +48,9 @@ jobs	return
 
 import heapq
 def solution(inp_lst):
-    inp_lst_sorted = sorted(inp_lst, lambda x: x[1])
+    answer = 0
+    inp_lst_sorted = sorted(inp_lst, key = lambda x: x[1])
+    inp_lst_sorted
+    
     print(inp_lst_sorted)
 solution([[0, 3], [1, 9], [2, 6]])
