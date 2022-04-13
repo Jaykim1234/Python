@@ -20,19 +20,12 @@
 #         result += num
         
 # 답지 보고 다시 푼 것
-
 input = '567'
 
-for i in input:
-    print(int(i))
-
-
-# num = input[0]
-# int_num = int(num)
-
-# for i in input:
-#     if int_num <= 1 or int(i) <= 1:
-#         int_num += i
-#     else:
-#         int_num*= i
-# print(int_num)
+for i in range(1, len(input)): # 'for i in input 하면' 왜 오류가 뜨는지 모르겠다. 
+    num = int(input[i])
+    if num <= 1 or int(i) <= 1:
+        num += i
+    else:
+        num*= i
+print(num)
