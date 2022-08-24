@@ -23,5 +23,48 @@ int getDir(int dir, char roDir) {
 
 int move() {
     deque<pair<int, int>> snake;
-    snake.push_back(make_pair())
+    snake.push_back(make_pair(1, 1));
+
+    int y, x;
+    int time = 0 ;
+    int dir = 0 ;
+    int roCnt = snakeDir.front().first;
+    char roDir = snakeDir.front().second;
+    snakeDir.pop();
+    y = x =1;
+    map[y][x] = SNAKE;
+
+    while (1) {
+        y = y + dy[dir];
+        x = x + dy[dir];
+        time += 1;
+
+        if (y==0 || y == (n+1) || x==0 || x==(n+1)) return time;
+
+        if (map[y][x] == SNAKE) return time;
+
+        if (map[y][x] == APPLE) {
+            map[y][x] = SNAKE;
+            snake.push_front(make_pair(y, x));
+
+        }
+
+        else{
+            map[y][x] = SNAKE;
+            snake.push_front(make_pair(y,x));
+            map[snake.back().first][snake.back().second] = 0;
+            snake.pop_back();
+        }
+        if (time==roCnt){
+            dir = getDir(dir, roDir);
+            if(!snakeDir.empty()){
+                roCnt = snakeDir.front().first;
+                roDir = snakeDir.front().second;
+                snakeDir.pop();
+
+            }
+        }
+
+    }
 }
+#https://smartshk.tistory.com/30
